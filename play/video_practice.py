@@ -9,14 +9,14 @@ def main():
         width = int(capture.get(3))
         height = int(capture.get(4)) # 4 is the 3rd property of a capture, look up documentation for more properties
         
-        image = np.zeros(frame.shape, np.uint8)
-        smaller_frame = cv2.resize(frame, (0, 0), fx=.5, fy=.5)
-        image[:height//2, :width//2] = cv2.rotate(smaller_frame, cv2.ROTATE_180)
-        image[:height//2, width//2:] = smaller_frame
-        image[height//2:, :width//2] = cv2.rotate(smaller_frame, cv2.ROTATE_180)
-        image[height//2:, width//2:] = smaller_frame
-        
-        cv2.imshow('Video frame', image)
+        #               (starting pos, ending pos, color, line thickness)
+        image = cv2.line(frame, (0,0), (width, height), (255, 0, 0), 10)
+        image = cv2.line(frame, (width,0), (0, height), (0, 0, 255), 10)
+        #                    (top left corner, bottom left corner, color, thickness)
+        image = cv2.rectangle(image, (100, 100), (200, 200), (128,128,128), 5)
+        #                 (center, radius, color, thickness)
+        image = cv2.circle(image, (300, 300), 100, (0,255,0), -1)
+        cv2.imshow('Video Frame', image)
         
         if(cv2.waitKey(1) == ord('q')):
             break
