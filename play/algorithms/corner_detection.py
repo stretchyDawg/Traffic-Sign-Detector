@@ -7,7 +7,7 @@ FILENAME = 'assets/chessboard.png'
 
 def main():
     img = cv2.imread(FILENAME)
-    img = cv2.resize(img, (0,0), fx=.75, fy=.75)
+    img = cv2.resize(img, (0,0), fx=.5, fy=.5)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     
     #                                (number of corners, minimum quality, minimum euclidean distance)
